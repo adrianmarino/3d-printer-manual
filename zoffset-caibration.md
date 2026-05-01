@@ -66,6 +66,12 @@ Mientras se imprime, observa la línea de plástico. Si notas defectos, ajusta l
   ```
 > 💡 **Tip:** Realiza ajustes muy pequeños (de 0.01 o 0.02) y espera a que la impresora aplique el cambio antes de volver a ajustar.
 
+> ℹ️ **¿Se puede ajustar el Z-Offset sin estar imprimiendo?**
+> Sí, puedes enviar el comando `SET_GCODE_OFFSET Z_ADJUST=... MOVE=1` desde la consola estando en reposo. Ten en cuenta lo siguiente:
+> * **Requiere Home:** La impresora **debe** estar en Home (`G28`) para que funcione el parámetro `MOVE=1` (de lo contrario Klipper no sabe dónde está el cabezal).
+> * **Sigue siendo temporal:** El cambio solo dura hasta que reinicies la impresora. Para hacerlo permanente debes guardarlo (ver siguiente sección).
+> * **Uso ideal:** Es perfecto si acabas de terminar una impresión, notaste que la base quedó apenas muy aplastada o separada, y quieres aplicar la corrección inmediatamente para la próxima impresión sin tener que volver a hacer el método del papel.
+
 
 ### Guardar los Cambios Definitivos
 
