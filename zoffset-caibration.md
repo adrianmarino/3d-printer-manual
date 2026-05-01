@@ -9,7 +9,8 @@ Los materiales como el ABS expanden los componentes de la impresora al calentars
 
 1. **Precalentamiento:** Sube la temperatura de la cama a **100°C** y la boquilla a **180°C** (lo suficiente para ablandar restos de plástico sin que gotee).
 2. **Estabilización:** Espera de **10 a 15 minutos** con la cámara cerrada. Esto permite que el chasis de la impresora se dilate por completo y alcance su tamaño real de trabajo.
-2. Posicion el cabezal en Home con el comando `G28`.
+3. Posicion el cabezal en Home con el comando `G28`.
+4. utilizar un objeto cubo de 30mmx30mmx0.2mm y colocarlo en el centro de la cama. Este objeto se imprime muy rapido, permituendo realizar impreciones con cada ajuste del z-offset para obtener un resultados rapidamente.
 
 
 ## 2️⃣ Calibración Inicial (Método del Papel)
