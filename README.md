@@ -12,6 +12,9 @@ Aquí encontrarás todas las guías detalladas disponibles actualmente:
 * [🗺️ Calibración de la Cama (Bed Mesh)](./bed-mesh-calibration.md)
   > Genera y guarda la malla topográfica de la cama de impresión. Explica cómo crear y guardar perfiles para distintos materiales y temperaturas (ej. `BED_MESH_PROFILE SAVE=cr_abs`) y cómo cargarlos.
 
+* [🔥 Calentamiento rápido de cámara (HEATSOAK_CHAMBER)](./heatsoak-chamber.md)
+  > Macro para acelerar el precalentamiento de la cámara con convección forzada y ventiladores 5015, optimizada para ABS en impresoras con cámara cerrada.
+
 ---
 
 *Se irán añadiendo más guías y tutoriales próximamente...*
