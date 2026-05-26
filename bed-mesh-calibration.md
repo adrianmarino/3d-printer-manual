@@ -1,6 +1,14 @@
 # 🗺️ Calibración de la Cama (Bed Mesh)
 
-La malla de nivelación de la cama (Bed Mesh) permite a Klipper compensar las pequeñas irregularidades y deformaciones de la superficie de impresión, subiendo y bajando el eje Z microscópicamente durante la impresión para asegurar una primera capa perfecta en todo el área.
+La malla de nivelación de la cama (Bed Mesh) en Klipper crea un mapa topográfico de la superficie de impresión y corrige las variaciones de altura en tiempo real. Durante la impresión, Klipper ajusta la posición del eje Z en cada punto de la cama para mantener una separación constante entre la boquilla y el lecho, lo que mejora mucho la calidad de la primera capa.
+
+Si usas la calibración adaptativa nativa de Klipper (o KAMP), lo ideal es contar con una **Malla Base** o **Ancla de Seguridad**. Esta malla completa debe generarse con la cama a la temperatura de trabajo y guardarse como referencia estable.
+
+Es recomendable crear una sola malla completa para cada temperatura o material habitual (por ejemplo, una matriz de 9x9 o 11x11). Hazla con la cama caliente y deja que el sistema se estabilice unos 10-15 minutos antes de calibrar. Luego guarda esa malla en la configuración como `default` o con un nombre claro.
+
+**¿Por qué hacerlo así?**
+
+Klipper usa la malla completa como un **mapa topográfico de referencia**. Si la calibración adaptativa genera pocos puntos por una pieza pequeña, Klipper combina esa micro-malla con la tendencia general de la malla base para evitar puntos erráticos y prevenir colisiones del nozzle.
 
 ---
 
