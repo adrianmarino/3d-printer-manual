@@ -118,4 +118,82 @@ plot_horizontal_bars(
     color_map='viridis', reverse_color=False, suffix='/10'
 )
 
+# 5. Gráfico de Dispersión Multivariable (Matriz de Decisión de 4 Variables)
+def plot_decision_matrix():
+    fig, ax = plt.subplots(figsize=(10.5, 7.5))
+    
+    # Eje X = Facilidad de impresión (printability)
+    # Eje Y = Resistencia a la tracción (tensile)
+    # Tamaño = Resistencia al impacto (impact)
+    # Color = Resistencia térmica (thermal)
+    
+    plot_sizes = np.clip(np.array(impact) * 1.5, 80, 600)
+    
+    sc = ax.scatter(
+        printability, tensile, 
+        s=plot_sizes, c=thermal, 
+        cmap='YlOrRd', alpha=0.75, edgecolors='#2c3e50', linewidth=1.2
+    )
+    
+    # Anotaciones personalizadas de cada material para que no se superpongan
+    offsets = {
+        'PEEK': (0.35, -1.0),
+        'PA-CF (Nylon+Carbono)': (0.35, 0.5),
+        'PETG-CF (PETG+Carbono)': (-1.9, -1.5),
+        'PC (Policarbonato)': (0.35, -1.0),
+        'Nylon (PA)': (0.35, 0.5),
+        'PLA': (0.3, -1.5),
+        'PETG': (-0.7, 1.5),
+        'ASA': (0.3, 1.0),
+        'ABS': (-0.6, -2.5),
+        'TPU (Flexible)': (0.3, -2.0),
+        'HIPS': (0.3, 1.0),
+        'PP (Polipropileno)': (-1.8, -2.0)
+    }
+    
+    for i, txt in enumerate(materials):
+        clean_txt = txt.split(' ')[0] # E.g., 'PA-CF'
+        offset = offsets.get(txt, (0.3, 0))
+        
+        # Dibujar flechas para etiquetas desplazadas significativamente
+        has_arrow = abs(offset[0]) > 0.5 or abs(offset[1]) > 2
+        ax.annotate(
+            clean_txt, 
+            (printability[i], tensile[i]),
+            xytext=(printability[i] + offset[0], tensile[i] + offset[1]),
+            fontsize=9.5, fontweight='bold', color='#2c3e50',
+            arrowprops=dict(arrowstyle="->", color='#95a5a6', lw=0.8, alpha=0.5) if has_arrow else None
+        )
+        
+    ax.set_title("Matriz de Decisión: Resistencia vs. Facilidad de Impresión", pad=20, fontweight='bold', color='#2c3e50')
+    ax.set_xlabel("Facilidad de Impresión (1 = Extremo, 10 = Muy Fácil)", labelpad=10, fontweight='bold', color='#34495e')
+    ax.set_ylabel("Resistencia a la Tracción (MPa)", labelpad=10, fontweight='bold', color='#34495e')
+    
+    ax.set_xlim(-0.5, 11)
+    ax.set_ylim(20, 110)
+    ax.set_xticks(range(1, 11))
+    
+    # Barra de color para Temperatura
+    cbar = plt.colorbar(sc, ax=ax, pad=0.03, shrink=0.8)
+    cbar.set_label("Resistencia Térmica (HDT, °C)", labelpad=10, fontweight='bold', color='#34495e')
+    
+    # Leyenda para tamaño de burbuja (Impacto)
+    for size_val, label in zip([50, 200, 500], ["Bajo (~50 J/m)", "Alto (~180 J/m)", "Extremo / No Rompe"]):
+        ax.scatter([], [], c='#bdc3c7', alpha=0.6, s=size_val*1.5, label=label, edgecolors='#7f8c8d')
+    
+    legend = ax.legend(title="Resistencia al Impacto", loc="upper left", frameon=True, facecolor='#ffffff', edgecolor='#bdc3c7')
+    legend.get_title().set_fontweight('bold')
+    
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_color('#bdc3c7')
+    ax.spines['bottom'].set_color('#bdc3c7')
+    ax.grid(True, linestyle='--', alpha=0.4)
+    
+    plt.tight_layout()
+    plt.savefig(os.path.join('images', 'decision_matrix.png'), dpi=300, bbox_inches='tight')
+    plt.close()
+
+plot_decision_matrix()
+
 print("Gráficos generados correctamente en la carpeta './images'")

@@ -30,24 +30,29 @@ Para facilitar la toma de decisiones, a continuación se presentan los gráficos
 
 ![Gráfico de Facilidad de Impresión](./images/printability.png)
 
+### 5. Matriz de Decisión Multivariable (Análisis Cruzado)
+*Mapa de correlación de 4 variables: Facilidad de Impresión (Eje X) vs. Resistencia a la Tracción (Eje Y). El tamaño de cada burbuja representa su Resistencia al Impacto (J/m) y el color de fondo representa su Resistencia Térmica de Deflexión (HDT, °C).*
+
+![Matriz de Decisión Multivariable](./images/decision_matrix.png)
+
 ---
 
 ## 📋 Tabla Comparativa Completa de Propiedades
 
-| Material | Resistencia a la Tracción (MPa) | Resistencia al Impacto (J/m) | Resistencia Térmica (HDT, °C) | Facilidad de Impresión | Características Clave y Aplicaciones |
+| Material | Resistencia a la Tracción (MPa) | Resistencia al Impacto (J/m) | Resistencia Térmica (HDT Aprox. °C) | Facilidad de Impresión | Características Clave y Aplicaciones |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **PLA** | 50 – 65 *(Alta)* | 15 – 25 *(Muy Baja)* | ~55 °C | 10 / 10 | Rígido y frágil. Excelente para prototipos visuales y piezas decorativas rápidas. |
-| **PETG** | 45 – 55 *(Media-Alta)* | 60 – 120 *(Media)* | ~78 °C | 8 / 10 | Muy versátil. Excelente resistencia química, tenaz y con poca contracción. |
-| **ABS** | 33 – 45 *(Media)* | 150 – 200 *(Alta)* | ~98 °C | 4 / 10 | Tenaz y ligero. Fácil de post-procesar (lijar/acetona). Sufre de *warping* severo. |
-| **ASA** | 40 – 50 *(Media)* | 160 – 210 *(Alta)* | ~98 °C | 5 / 10 | Excelente para exteriores. Resistente a rayos UV e intemperie. Similar al ABS pero con menor contracción. |
-| **Nylon (PA)** | 45 – 75 *(Alta)* | > 500 *(Extrema)* | ~110 °C | 2 / 10 | Súper tenaz y flexible. Gran resistencia al desgaste y fatiga. Altamente higroscópico. |
-| **Policarbonato (PC)** | 65 – 75 *(Muy Alta)* | 250 – 400 *(Extrema)* | ~115 °C | 1 / 10 | Piezas estructurales extremas. Combina alta rigidez con resistencia de impacto masiva. |
-| **TPU** | 30 – 40 *(Baja)* | No rompe *(Absorción)*| ~50 °C | 6 / 10 | Elastómero flexible. Ideal para juntas, bujes, protectores y amortiguadores de impacto. |
-| **PA-CF** | 80 – 110 *(Extrema)* | 80 – 120 *(Media)* | ~150 °C | 3 / 10 | Nylon reforzado con carbono. Súper ligero, ultra rígido y estable térmicamente. Muy abrasivo. |
-| **PETG-CF** | 70 – 90 *(Muy Alta)* | 60 – 80 *(Baja)* | ~80 °C | 4 / 10 | PETG reforzado con carbono. Mayor rigidez estructural que el PETG común con buena facilidad de impresión. |
-| **HIPS** | 30 – 35 *(Baja)* | 75 – 100 *(Media)* | ~75 °C | 6 / 10 | Utilizado principalmente como material de soporte soluble (en limoneno) para ABS. |
-| **PP** | 25 – 32 *(Baja)* | No rompe *(Extrema)* | ~98 °C | 2 / 10 | Excelente fatiga mecánica (bisagras vivas) y resistencia química. Muy difícil adherir a la cama. |
-| **PEEK** | 90 – 100 *(Extrema)* | 60 – 70 *(Media)* | ~160 °C | 0.5 / 10 | Grado aeroespacial y médico. Máxima resistencia química y mecánica. Requiere hardware especializado. |
+| **PLA** | 50 – 65 *(Alta)* | 15 – 25 *(Muy Baja)* | 55 °C | 10 / 10 | Rígido y frágil. Excelente para prototipos visuales y piezas decorativas rápidas. |
+| **PETG** | 45 – 55 *(Media-Alta)* | 60 – 120 *(Media)* | 78 °C | 8 / 10 | Muy versátil. Excelente resistencia química, tenaz y con poca contracción. |
+| **ABS** | 33 – 45 *(Media)* | 150 – 200 *(Alta)* | 98 °C | 4 / 10 | Tenaz y ligero. Fácil de post-procesar (lijar/acetona). Sufre de *warping* severo. |
+| **ASA** | 40 – 50 *(Media)* | 160 – 210 *(Alta)* | 98 °C | 5 / 10 | Excelente para exteriores. Resistente a rayos UV e intemperie. Similar al ABS pero con menor contracción. |
+| **Nylon (PA)** | 45 – 75 *(Alta)* | > 500 *(Extrema)* | 110 °C | 2 / 10 | Súper tenaz y flexible. Gran resistencia al desgaste y fatiga. Altamente higroscópico. |
+| **Policarbonato (PC)** | 65 – 75 *(Muy Alta)* | 250 – 400 *(Extrema)* | 115 °C | 1 / 10 | Piezas estructurales extremas. Combina alta rigidez con resistencia de impacto masiva. |
+| **TPU** | 30 – 40 *(Baja)* | No rompe *(Absorción)*| 50 °C | 6 / 10 | Elastómero flexible. Ideal para juntas, bujes, protectores y amortiguadores de impacto. |
+| **PA-CF** | 80 – 110 *(Extrema)* | 80 – 120 *(Media)* | 150 °C | 3 / 10 | Nylon reforzado con carbono. Súper ligero, ultra rígido y estable térmicamente. Muy abrasivo. |
+| **PETG-CF** | 70 – 90 *(Muy Alta)* | 60 – 80 *(Baja)* | 80 °C | 4 / 10 | PETG reforzado con carbono. Mayor rigidez estructural que el PETG común con buena facilidad de impresión. |
+| **HIPS** | 30 – 35 *(Baja)* | 75 – 100 *(Media)* | 75 °C | 6 / 10 | Utilizado principalmente como material de soporte soluble (en limoneno) para ABS. |
+| **PP** | 25 – 32 *(Baja)* | No rompe *(Extrema)* | 98 °C | 2 / 10 | Excelente fatiga mecánica (bisagras vivas) y resistencia química. Muy difícil adherir a la cama. |
+| **PEEK** | 90 – 100 *(Extrema)* | 60 – 70 *(Media)* | 160 °C | 0.5 / 10 | Grado aeroespacial y médico. Máxima resistencia química y mecánica. Requiere hardware especializado. |
 
 ---
 
