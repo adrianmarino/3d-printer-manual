@@ -8,77 +8,27 @@ Al diseñar piezas para impresión 3D, elegir el material correcto es fundamenta
 
 ## 📊 Gráficos Comparativos de Rendimiento (Visual)
 
+Para facilitar la toma de decisiones, a continuación se presentan los gráficos comparativos de barras generados directamente a partir de las especificaciones mecánicas y térmicas de cada filamento:
+
 ### 1. Resistencia a la Tracción (MPa)
 *Mide la capacidad de soportar fuerzas de estiramiento y cargas pesadas antes de romperse (promedios en MPa, eje X-Y).*
 
-```text
-PEEK (Polímero Industrial) : █████████████████████████████████ 95 MPa
-PA-CF (Nylon + Carbono)    : ███████████████████████████████ 95 MPa
-PETG-CF (PETG + Carbono)   : ██████████████████████████ 80 MPa
-PC (Policarbonato)         : ███████████████████████ 70 MPa
-Nylon (PA)                 : ████████████████████ 60 MPa
-PLA                        : ███████████████████ 57 MPa
-PETG                       : ████████████████ 50 MPa
-ASA                        : ███████████████ 45 MPa
-ABS                        : █████████████ 39 MPa
-TPU (Flexible)             : ███████████ 35 MPa
-HIPS                       : ██████████ 32 MPa
-PP (Polipropileno)         : ████████ 28 MPa
-```
+![Gráfico de Resistencia a la Tracción](./images/tensile_strength.png)
 
 ### 2. Resistencia al Impacto (J/m)
 *Mide la capacidad de absorber energía y resistir golpes directos, caídas y choques repentinos sin quebrarse (promedios en J/m).*
 
-```text
-TPU (Flexible)             : ██████████████████████████████ 500+ J/m (No rompe)
-PP (Polipropileno)         : ██████████████████████████████ 500+ J/m (No rompe)
-Nylon (PA)                 : ██████████████████████████████ 500+ J/m (Extrema)
-PC (Policarbonato)         : ███████████████████ 325 J/m
-ASA                        : ███████████ 185 J/m
-ABS                        : ██████████ 175 J/m
-PA-CF (Nylon + Carbono)    : ██████ 100 J/m
-PETG                       : █████ 90 J/m
-HIPS                       : █████ 85 J/m
-PETG-CF (PETG + Carbono)   : ████ 70 J/m
-PEEK (Polímero Industrial) : ████ 65 J/m
-PLA                        : █ 20 J/m
-```
+![Gráfico de Resistencia al Impacto](./images/impact_strength.png)
 
 ### 3. Resistencia Térmica (Temperatura de Deflexión - HDT a 0.45 MPa)
 *Mide la temperatura a partir de la cual el material comienza a ablandarse y deformarse bajo carga estática.*
 
-```text
-PEEK (Polímero Industrial) : ████████████████████████████████ 160 °C (Cristalizado: >250 °C)
-PA-CF (Nylon + Carbono)    : ██████████████████████████████ 150 °C
-PC (Policarbonato)         : ███████████████████████ 115 °C
-Nylon (PA)                 : ██████████████████████ 110 °C
-ABS                        : ████████████████████ 98 °C
-ASA                        : ████████████████████ 98 °C
-PP (Polipropileno)         : ████████████████████ 98 °C
-PETG-CF (PETG + Carbono)   : ████████████████ 80 °C
-PETG                       : ████████████████ 78 °C
-HIPS                       : ███████████████ 75 °C
-PLA                        : ███████████ 55 °C
-TPU (Flexible)             : ██████████ 50 °C
-```
+![Gráfico de Resistencia Térmica](./images/thermal_resistance.png)
 
 ### 4. Facilidad de Impresión (Escala 1 al 10)
 *Evaluación de la dificultad de impresión (adhesión, warping, exigencia de hardware, control de humedad).*
 
-```text
-PLA                        : ██████████████████████████████ 10/10 (Muy fácil)
-PETG                       : ████████████████████████ 8/10 (Fácil)
-HIPS                       : ███████████████████ 6/10 (Media)
-TPU (Flexible)             : ██████████████████ 6/10 (Media-Flexible)
-ASA                        : ███████████████ 5/10 (Media-Warping)
-PETG-CF (PETG + Carbono)   : ██████████████ 4/10 (Abrasivo)
-ABS                        : ████████████ 4/10 (Difícil-Warping)
-PA-CF (Nylon + Carbono)    : █████████ 3/10 (Muy difícil - Abrasivo)
-PP (Polipropileno)         : ██████ 2/10 (Alta contracción)
-Nylon (PA)                 : ██████ 2/10 (Complejo - Higroscópico)
-PC (Policarbonato)         : ███ 1/10 (Extremo - Warping y Temperatura)
-PEEK (Polímero Industrial) : █ 0.5/10 (Grado Industrial - Requisitos de cámara)
-```
+![Gráfico de Facilidad de Impresión](./images/printability.png)
 
 ---
 
