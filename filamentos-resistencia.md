@@ -1,10 +1,44 @@
 # Guía de Resistencia de Filamentos de Impresión 3D
 
-Al diseñar piezas para impresión 3D, elegir el material correcto es fundamental para garantizar su viabilidad mecánica. A continuación, se presenta un análisis detallado y una tabla comparativa de las propiedades mecánicas de los filamentos más comunes.
+Al diseñar piezas para impresión 3D, elegir el material correcto es fundamental para garantizar su viabilidad mecánica. A continuación, se presenta un análisis detallado, tablas comparativas y gráficos visuales de las propiedades mecánicas de los filamentos más comunes.
 
 > **Nota sobre la Anisotropía:** Las piezas impresas en 3D (FDM/FFF) son anisotrópicas. Esto significa que la resistencia mecánica varía según la dirección de los esfuerzos respecto a la orientación de las capas. Una pieza siempre será mucho más débil en el eje Z (separación entre capas) que en los ejes X e Y (dirección del filamento extruido).
 
-## Tabla Comparativa de Propiedades Mecánicas
+---
+
+## 📊 Gráficos Comparativos de Rendimiento (Visual)
+
+### 1. Resistencia a la Tracción (MPa)
+*Mide la capacidad de soportar fuerzas de estiramiento antes de romperse (promedios en MPa).*
+
+```text
+PA-CF (Nylon + Carbono) : ███████████████████████████████ 95 MPa
+PC (Policarbonato)      : ███████████████████████ 70 MPa
+Nylon (PA)              : ████████████████████ 60 MPa
+PLA                     : ███████████████████ 57 MPa
+PETG                    : ████████████████ 50 MPa
+ASA                     : ███████████████ 45 MPa
+ABS                     : █████████████ 39 MPa
+TPU (Flexible)          : ███████████ 35 MPa
+```
+
+### 2. Resistencia al Impacto (J/m)
+*Mide la capacidad de absorber energía ante golpes y choques repentinos sin quebrarse (promedios en J/m).*
+
+```text
+TPU (Flexible)          : ██████████████████████████████ 500+ J/m (No rompe)
+Nylon (PA)              : ██████████████████████████████ 500+ J/m (Extrema)
+PC (Policarbonato)      : ███████████████████ 325 J/m
+ASA                     : ███████████ 185 J/m
+ABS                     : ██████████ 175 J/m
+PA-CF (Nylon + Carbono) : ██████ 100 J/m
+PETG                    : █████ 90 J/m
+PLA                     : █ 20 J/m
+```
+
+---
+
+## 📋 Tabla Comparativa de Propiedades Mecánicas
 
 | Material | Resistencia a la Tracción (MPa)<br>*(Soportar estiramiento)* | Resistencia a la Flexión (MPa)<br>*(Soportar doblado)* | Resistencia al Impacto<br>*(Soportar golpes, J/m)* | Rigidez / Módulo Flexural<br>*(Deformación antes de ruptura)* |
 | :--- | :---: | :---: | :---: | :--- |
@@ -17,7 +51,9 @@ Al diseñar piezas para impresión 3D, elegir el material correcto es fundamenta
 | **TPU (Flexible)** | 30 – 40 *(Baja)* | N/A *(Se dobla por completo)*| **Absorción total** | **Nula**. Es un elastómero. |
 | **PA-CF (Nylon + Carbono)**| 80 – 110 *(Extrema)* | 120 – 150 *(Extrema)* | 80 – 120 *(Media)* | **Extrema**. La fibra aporta rigidez masiva, pero lo vuelve más frágil al impacto que el PA puro. |
 
-## Análisis de Rendimiento: ¿Cuál elegir según el esfuerzo?
+---
+
+## 🧠 Análisis de Rendimiento: ¿Cuál elegir según el esfuerzo?
 
 ### 1. Para soportar cargas constantes sin deformarse (Tracción y Rigidez)
 *   **Ganador:** **PLA** (en entornos de menos de 50°C) o **PA-CF / PETG** (para ambientes más cálidos o esfuerzos sostenidos).
