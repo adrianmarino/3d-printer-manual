@@ -12,6 +12,9 @@ Aquí encontrarás todas las guías detalladas disponibles actualmente:
 * [🗺️ Calibración de la Cama (Bed Mesh)](./bed-mesh-calibration.md)
   > Genera y guarda la malla topográfica de la cama de impresión. Explica cómo crear y guardar perfiles para distintos materiales y temperaturas (ej. `BED_MESH_PROFILE SAVE=cr_abs`) y cómo cargarlos.
 
+* [💪 Guía de Resistencia de Filamentos](./filamentos-resistencia.md)
+  > Comparativa y análisis técnico de las propiedades mecánicas (tracción, flexión e impacto) de los filamentos de impresión 3D más comunes (PLA, PETG, ABS, Nylon, PC, TPU, etc.).
+
 * [🔥 Calentamiento rápido de cámara (HEATSOAK_CHAMBER)](./heatsoak-chamber.md)
   > Macro para acelerar el precalentamiento de la cámara con convección forzada y ventiladores 5015, optimizada para ABS en impresoras con cámara cerrada.
 
