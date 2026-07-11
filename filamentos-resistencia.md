@@ -30,10 +30,30 @@ Para facilitar la toma de decisiones, a continuación se presentan los gráficos
 
 ![Gráfico de Facilidad de Impresión](./images/printability.png)
 
-### 5. Matriz de Decisión Multivariable (Análisis Cruzado)
-*Mapa de correlación de 4 variables: Facilidad de Impresión (Eje X) vs. Resistencia a la Tracción (Eje Y). El tamaño de cada burbuja representa su Resistencia al Impacto (J/m) y el color de fondo representa su Resistencia Térmica de Deflexión (HDT, °C).*
+### 5. Matrices de Decisión Multivariable (Análisis Cruzados)
 
-![Matriz de Decisión Multivariable](./images/decision_matrix.png)
+Para resolver decisiones complejas de diseño, estas matrices cruzan 4 variables críticas simultáneamente. El tamaño de cada burbuja representa la variable de soporte (tercera variable) y la barra de color representa la facilidad de impresión o la resistencia térmica (cuarta variable).
+
+#### 5.1 Matriz de Selección General (Resistencia vs. Facilidad)
+*Compara la Facilidad de Impresión (Eje X) frente a la Resistencia a la Tracción (Eje Y). El tamaño del círculo representa la Resistencia al Impacto (J/m) y el color representa su Resistencia Térmica (HDT, °C).*
+
+![Matriz de Selección General](./images/decision_matrix_general.png)
+
+*   **Utilidad:** Ideal para usuarios que buscan maximizar el rendimiento mecánico de tracción sin complicarse con materiales extremadamente complejos de imprimir.
+
+#### 5.2 Matriz de Entornos Duros (Térmica vs. Impacto)
+*Compara la Resistencia Térmica de Deflexión (Eje X) frente a la Resistencia al Impacto (Eje Y). El tamaño del círculo representa la Resistencia a la Tracción (MPa) y el color representa la Facilidad de Impresión (escala de rojo = difícil, a verde = fácil).*
+
+![Matriz de Entornos Duros](./images/decision_matrix_harsh.png)
+
+*   **Utilidad:** Diseñada para ingenieros que necesitan piezas para entornos mecánicamente agresivos y con altas temperaturas (ej. compartimentos de motor o herramientas de intemperie). Permite encontrar el balance perfecto entre resistir el calor y no fracturarse ante un golpe.
+
+#### 5.3 Matriz de Comportamiento Mecánico (Tracción vs. Impacto)
+*Compara la Resistencia a la Tracción (Eje X - Rigidez) frente a la Resistencia al Impacto (Eje Y - Tenacidad). El tamaño del círculo representa la Resistencia Térmica (HDT, °C) y el color representa la Facilidad de Impresión (escala de rojo = difícil, a verde = fácil).*
+
+![Matriz Mecánica](./images/decision_matrix_mechanical.png)
+
+*   **Utilidad:** Revela el clásico dilema del diseño de materiales: *¿Rigidez estructural o Tenacidad dinámica?* Permite ubicar materiales rígidos pero frágiles (como el PLA) frente a materiales sumamente tenaces pero altamente flexibles (como el TPU o el PP), o polímeros extremos que combinan ambos mundos (como el Policarbonato).
 
 ---
 
