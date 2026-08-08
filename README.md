@@ -25,6 +25,9 @@ Aquí encontrarás todas las guías detalladas disponibles actualmente:
 * [🌀 Mod Ventiladores en la Cama (Bed Fans)](./bed-fans-mod.md)
   > Hardware mod para reducir el tiempo de calentamiento de cámara a la mitad. Incluye piezas imprimibles y guía de instalación para la Creality K1 Max.
 
+* [🖥️ Configuración de la K1 Max](./k1-max-setup.md)
+  > Documentación completa del hardware, software y configuración actual de la impresora (Klipper, Moonraker, Mainsail, addons instalados).
+
 ---
 
 *Se irán añadiendo más guías y tutoriales próximamente...*
