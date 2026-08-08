@@ -24,6 +24,7 @@ variable_bed_temp: 100
 variable_chamber_target: 50
 variable_timeout: 40
 variable_cycle_counter: 0
+variable_cancelled: 0
 gcode:
 
 # ====================================================================
@@ -66,6 +67,26 @@ gcode:
         # Disparar el temporizador para la primera evaluación en 1 segundo
         UPDATE_DELAYED_GCODE ID=HEATSOAK_CHAMBER_TICK DURATION=1
     {% endif %}
+
+# ====================================================================
+# MACRO DE CANCELACIÓN: HEATSOAK_CHAMBER_CANCEL
+# ====================================================================
+[gcode_macro HEATSOAK_CHAMBER_CANCEL]
+description: Cancela el precalentamiento de cámara en curso de forma segura
+gcode:
+    # Detener el bucle temporizado inmediatamente
+    UPDATE_DELAYED_GCODE ID=HEATSOAK_CHAMBER_TICK DURATION=0
+    
+    # Devolver ventiladores a valores normales
+    SET_TEMPERATURE_FAN_TARGET TEMPERATURE_FAN=chamber_fan TARGET=0
+    SET_PIN PIN=fan1 VALUE=0
+    
+    # Mover cama a posición segura lejos de la boquilla
+    G90
+    G1 Z150 F600
+    
+    M117 Heatsoak Cancelado
+    {action_respond_info("HEATSOAK_CHAMBER cancelado por el usuario. Cama en Z150 (posición segura).")}
 
 # ====================================================================
 # TEMPORIZADOR DE CONTROL: HEATSOAK_CHAMBER_TICK
@@ -158,6 +179,19 @@ HEATSOAK_CHAMBER BED_TEMP=100 CHAMBER_TARGET=55 TIMEOUT=40
 ```
 
 > **Nota:** El valor de `TIMEOUT` se especifica en **minutos**. Algunos valores comunes: `30` = 30 min, `40` = 40 min, `60` = 1 hora, `90` = 1.5 horas.
+
+### Cancelar el precalentamiento
+
+Si necesitas detener el proceso en cualquier momento (por emergencia, cambio de plan, etc.), ejecuta:
+
+```gcode
+HEATSOAK_CHAMBER_CANCEL
+```
+
+Esto detendrá inmediatamente:
+- El bucle de movimiento de la cama
+- Los ventiladores de convección
+- Moverá la cama a Z150 (posición segura lejos de la boquilla)
 
 ## ¿Por qué es mejor para ABS?
 
