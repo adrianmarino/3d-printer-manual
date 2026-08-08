@@ -22,7 +22,7 @@ Esta macro acelera el calentamiento de la cámara usando convección forzada con
 variable_start_time: 0
 variable_bed_temp: 100
 variable_chamber_target: 50
-variable_timeout: 2400
+variable_timeout: 40
 variable_cycle_counter: 0
 gcode:
 
@@ -34,7 +34,7 @@ description: Calentamiento inteligente de cámara para ABS (Movimiento lento y c
 gcode:
     {% set BED_TEMP = params.BED_TEMP|default(100)|float %}
     {% set CHAMBER_TARGET = params.CHAMBER_TARGET|default(50)|float %}
-    {% set TIMEOUT = params.TIMEOUT|default(2400)|int %}
+    {% set TIMEOUT = params.TIMEOUT|default(40)|int %}
     {% set CURRENT_CHAMBER = printer["temperature_fan chamber_fan"].temperature|float %}
 
     # CASO 1: Si la cámara ya está caliente, omitimos el proceso
@@ -85,9 +85,9 @@ gcode:
     {% set cycle_counter = printer["gcode_macro _HEATSOAK_VARS"].cycle_counter|int %}
 
     # SEGURIDAD 1: ¿Se agotó el tiempo máximo? (default: 40 min)
-    {% if elapsed > timeout %}
+    {% if elapsed > timeout * 60 %}
         M117 ¡TIMEOUT! Calentamiento abortado
-        {action_respond_info("ABORTADO: Timeout de %s min alcanzado. Cámara a %s°C de %s°C objetivo." % ((timeout/60)|int, CURRENT_CHAMBER|round(1), CHAMBER_TARGET))}
+        {action_respond_info("ABORTADO: Timeout de %s min alcanzado. Cámara a %s°C de %s°C objetivo." % (timeout, CURRENT_CHAMBER|round(1), CHAMBER_TARGET))}
         UPDATE_DELAYED_GCODE ID=HEATSOAK_CHAMBER_TICK DURATION=0
         SET_TEMPERATURE_FAN_TARGET TEMPERATURE_FAN=chamber_fan TARGET={CHAMBER_TARGET}
 
@@ -139,7 +139,7 @@ gcode:
 
 - `BED_TEMP`: Temperatura objetivo de la cama. Por defecto `100`.
 - `CHAMBER_TARGET`: Temperatura objetivo de la cámara después del precalentamiento rápido. Por defecto `50`.
-- `TIMEOUT`: Tiempo máximo en segundos antes de abortar el calentamiento. Por defecto `2400` (40 minutos). Si la cámara no alcanza la temperatura objetivo en este tiempo, la macro se detiene automáticamente para evitar daños al hardware. Puedes ajustarlo según la capacidad térmica de tu cámara.
+- `TIMEOUT`: Tiempo máximo en minutos antes de abortar el calentamiento. Por defecto `40` (40 minutos). Si la cámara no alcanza la temperatura objetivo en este tiempo, la macro se detiene automáticamente para evitar daños al hardware. Puedes ajustarlo según la capacidad térmica de tu cámara.
 
 ### Ejemplos de uso
 
@@ -147,17 +147,17 @@ gcode:
 ; Uso básico — timeout de 40 min (por defecto)
 HEATSOAK_CHAMBER BED_TEMP=100 CHAMBER_TARGET=55
 
-; Con timeout personalizado — 1 hora (3600 segundos)
-HEATSOAK_CHAMBER BED_TEMP=110 CHAMBER_TARGET=60 TIMEOUT=3600
+; Con timeout personalizado — 1 hora
+HEATSOAK_CHAMBER BED_TEMP=110 CHAMBER_TARGET=60 TIMEOUT=60
 
 ; Solo cambiar timeout — usa valores por defecto para el resto
-HEATSOAK_CHAMBER TIMEOUT=1800
+HEATSOAK_CHAMBER TIMEOUT=30
 
 ; Todos los parámetros explícitos
-HEATSOAK_CHAMBER BED_TEMP=100 CHAMBER_TARGET=55 TIMEOUT=2400
+HEATSOAK_CHAMBER BED_TEMP=100 CHAMBER_TARGET=55 TIMEOUT=40
 ```
 
-> **Nota:** El valor de `TIMEOUT` se especifica en **segundos**. Algunos valores comunes: `1800` = 30 min, `2400` = 40 min, `3600` = 1 hora, `5400` = 1.5 horas.
+> **Nota:** El valor de `TIMEOUT` se especifica en **minutos**. Algunos valores comunes: `30` = 30 min, `40` = 40 min, `60` = 1 hora, `90` = 1.5 horas.
 
 ## ¿Por qué es mejor para ABS?
 
