@@ -1,6 +1,6 @@
-# 🔥 Macro HEATSOAK_CHAMBER
+# 🔥 Macro HEATSOAK_CHAMBER (Creality K1 Max)
 
-Esta macro acelera el calentamiento de la cámara usando convección forzada con turbinas 5015. Está pensada para impresoras como la Creality K1 Max, donde el calor de la cámara y la recirculación de aire mejoran la impresión de materiales exigentes como ABS.
+Esta macro acelera el calentamiento de la cámara usando convección forzada con turbinas 5015. Está diseñada específicamente para la **Creality K1 Max** (o impresoras similares con cámara cerrada y firmware Klipper/Mainsail).
 
 ## ¿Qué hace esta macro?
 
