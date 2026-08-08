@@ -1,4 +1,4 @@
-# 🖨️ Manual de Impresión 3D — Creality K1 Max
+# 🏭 Manual de Impresión 3D — Creality K1 Max
 
 ![Creality K1 Max](./images/creality-k1-max.jpg)
 
