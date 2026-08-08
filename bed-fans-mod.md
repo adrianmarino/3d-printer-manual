@@ -22,7 +22,8 @@ Este mod monta **dos ventiladores sobre la cama** para acelerar drásticamente e
 Las piezas de montaje se imprimen con el mismo filamento que usarás para imprimir (recomendado: **ABS** o **ASA** para resistencia térmica).
 
 📦 **Descarga las piezas desde Printables:**
-[Creality K1 Max - D3D Bed Fans](https://www.printables.com/model/871831-creality-k1-max-d3d-bed-fans?lang=es)
+- [Creality K1 Max - D3D Bed Fans](https://www.printables.com/model/871831-creality-k1-max-d3d-bed-fans?lang=es) — Opción principal
+- [K1 Max Bed Fan Ducts (No Logos)](https://www.printables.com/model/1491996-k1-max-bed-fan-ducts-no-logos) — Alternativa sin logotipos
 
 ## Instalación visual
 
