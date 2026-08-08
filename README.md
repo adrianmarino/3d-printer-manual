@@ -26,7 +26,13 @@ Aquí encontrarás todas las guías detalladas disponibles actualmente:
   > Hardware mod para reducir el tiempo de calentamiento de cámara a la mitad. Incluye piezas imprimibles y guía de instalación para la Creality K1 Max.
 
 * [🖥️ Configuración de la K1 Max](./k1-max-setup.md)
-  > Documentación completa del hardware, software y configuración actual de la impresora (Klipper, Moonraker, Mainsail, addons instalados).
+  > Documentación del hardware, sistema operativo y software instalado en la impresora (Klipper, Moonraker, Mainsail, addons).
+
+* [🔄 Firmware y Actualizaciones de la K1 Max](./k1-max-firmware.md)
+  > Versiones de firmware, cronología V1.3.x, proceso seguro de actualización con backup/restore y verificación de la versión real.
+
+* [⚙️ Configuración y Macros de la K1 Max](./k1-max-config.md)
+  > Archivos de configuración (`printer.cfg`, `gcode_macro.cfg`) y macros personalizados (HEATSOAK_CHAMBER, KAMP, timelapse).
 
 ---
 
