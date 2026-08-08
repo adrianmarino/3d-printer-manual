@@ -1,5 +1,7 @@
 # 🖨️ Manual de Impresión 3D — Creality K1 Max
 
+![Creality K1 Max](./images/creality-k1-max.jpg)
+
 Bienvenido al repositorio **3d-printer-manual**. Este proyecto es una recopilación de guías, tutoriales y configuraciones prácticas para la calibración, el ajuste y el mantenimiento de la **Creality K1 Max** (o impresoras similares con cámara cerrada y firmware Klipper/Mainsail).
 
 > **Nota:** Las guías, macros y configuraciones de este repositorio están diseñadas específicamente para la Creality K1 Max. Si usas otra impresora, algunos pasos (como las macros de calentamiento de cámara o las referencias a ventiladores 5015) pueden no aplicar directamente.
