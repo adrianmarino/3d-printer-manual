@@ -2,7 +2,7 @@
 
 Esta macro acelera el calentamiento de la cámara usando convección forzada con turbinas 5015. Está diseñada específicamente para la **Creality K1 Max** (o impresoras similares con cámara cerrada y firmware Klipper/Mainsail).
 
-> **💡 ¿Quieres reducir el tiempo a la mitad?** Si instalas el [Mod de Ventiladores en la Cama (Bed Fans)](./bed-fans-mod.md), los dos ventiladores montados sobre la cama recirculan el aire caliente de forma directa, cortando el tiempo de calentamiento aproximadamente por la mitad.
+> **💡 ¿Quieres reducir el tiempo a la mitad?** Si instalas el [Mod de Ventiladores en la Cama (Bed Fans)](./bed-fans-mod.md), los dos ventiladores montados sobre la cama recirculan el aire caliente de forma directa, cortando el tiempo de calentamiento aproximadamente por la mitad. Por ejemplo: sin el mod la cámara tarda ~60 min en llegar a 40°C, con el mod se logra en ~30 min.
 
 ## ¿Qué hace esta macro?
 
