@@ -2,7 +2,9 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-os.makedirs('/Users/adrian.marino/development/3d-printer-manual/images', exist_ok=True)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGES_DIR = os.path.join(SCRIPT_DIR, 'images')
+os.makedirs(IMAGES_DIR, exist_ok=True)
 
 try:
     plt.style.use('seaborn-v0_8-whitegrid')
@@ -50,7 +52,7 @@ def plot_horizontal_bars(title, data, labels, xlabel, filename, color_map='virid
             y_index = int(round(bar.get_y()))
             if y_index >= 0 and y_index < len(sorted_labels):
                 y_label = sorted_labels[y_index]
-                if "No rompe" in y_label or "Nylon" in y_label or "TPU" in y_label or "PP" in y_label:
+                if y_label in NO_BREAK_MATERIALS:
                     label_text = " >500 J/m (No rompe)"
                     
         ax.text(width, bar.get_y() + bar.get_height()/2, label_text, va='center', ha='left', fontsize=9.5, fontweight='bold', color='#2c3e50')
@@ -65,7 +67,7 @@ def plot_horizontal_bars(title, data, labels, xlabel, filename, color_map='virid
     ax.grid(True, axis='x', linestyle='--', alpha=0.5)
     
     plt.tight_layout()
-    plt.savefig(os.path.join('/Users/adrian.marino/development/3d-printer-manual/images', filename), dpi=300, bbox_inches='tight')
+    plt.savefig(os.path.join(IMAGES_DIR, filename), dpi=300, bbox_inches='tight')
     plt.close()
 
 
@@ -108,7 +110,7 @@ def create_matrix(x_data, y_data, size_data, color_data, title, xlabel, ylabel, 
     ax.grid(True, linestyle='--', alpha=0.4)
     
     plt.tight_layout()
-    plt.savefig(os.path.join('/Users/adrian.marino/development/3d-printer-manual/images', filename), dpi=300, bbox_inches='tight')
+    plt.savefig(os.path.join(IMAGES_DIR, filename), dpi=300, bbox_inches='tight')
     plt.close()
 
 
@@ -117,10 +119,15 @@ materials = [
     'PLA', 'PETG', 'ASA', 'ABS', 'TPU (Flexible)', 'HIPS', 'PP (Polipropileno)'
 ]
 
+# Valores medios de los rangos de la tabla comparativa
+# Nota: Nylon, TPU y PP tienen impacto ">500 (No rompe)" — se usa 520 como valor representativo
 tensile = [95, 95, 80, 70, 60, 57, 50, 45, 39, 35, 32, 28]
 impact = [65, 100, 70, 325, 520, 20, 90, 185, 175, 520, 85, 520]
 thermal = [160, 150, 80, 115, 110, 55, 78, 98, 98, 50, 75, 98]
 printability = [0.5, 3, 4, 1, 2, 10, 8, 5, 4, 6, 6, 2]
+
+# Materiales que no rompen por impacto (valor saturado para el gráfico)
+NO_BREAK_MATERIALS = {'Nylon (PA)', 'TPU (Flexible)', 'PP (Polipropileno)'}
 
 plot_horizontal_bars("Resistencia a la Tracción de Filamentos 3D", tensile, materials, "Resistencia a la Tracción (MPa) - Mayor es mejor", "tensile_strength.png", color_map='plasma', reverse_color=True, suffix=' MPa')
 plot_horizontal_bars("Resistencia al Impacto de Filamentos 3D", impact, materials, "Resistencia al Impacto (J/m) - Mayor es mejor", "impact_strength.png", color_map='viridis', reverse_color=True, suffix=' J/m')

@@ -34,6 +34,19 @@ Para facilitar la toma de decisiones, a continuación se presentan los gráficos
 
 Para resolver decisiones complejas de diseño, estas matrices cruzan 4 variables críticas simultáneamente. El tamaño de cada burbuja representa la variable de soporte (tercera variable) y la barra de color representa la facilidad de impresión o la resistencia térmica (cuarta variable).
 
+#### Cómo leer estas matrices
+
+Cada gráfico de burbujas muestra 4 variables a la vez:
+
+| Elemento | Qué representa | Cómo interpretarlo |
+| :--- | :--- | :--- |
+| **Eje X** | Variable principal (varía por matriz) | Más a la derecha = mayor valor |
+| **Eje Y** | Variable secundaria (varía por matriz) | Más arriba = mayor valor |
+| **Tamaño del círculo** | Tercera variable (ver leyenda) | Círculo más grande = mayor valor |
+| **Color del círculo** | Cuarta variable (barra de color) | Verde = fácil/bajo, Rojo = difícil/alto |
+
+**Consejo:** Busca materiales en la **esquina superior derecha** (ambos ejes altos) con **círculos grandes** y **color verde** para la mejor combinación general.
+
 #### 5.1 Matriz de Selección General (Resistencia vs. Facilidad)
 *Compara la Facilidad de Impresión (Eje X) frente a la Resistencia a la Tracción (Eje Y). El tamaño del círculo representa la Resistencia al Impacto (J/m) y el color representa su Resistencia Térmica (HDT, °C).*
 
@@ -59,20 +72,56 @@ Para resolver decisiones complejas de diseño, estas matrices cruzan 4 variables
 
 ## 📋 Tabla Comparativa Completa de Propiedades
 
-| Material | Resistencia a la Tracción (MPa) | Resistencia al Impacto (J/m) | Resistencia Térmica (HDT Aprox. °C) | Facilidad de Impresión | Características Clave y Aplicaciones |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| **PLA** | 50 – 65 *(Alta)* | 15 – 25 *(Muy Baja)* | 55 °C | 10 / 10 | Rígido y frágil. Excelente para prototipos visuales y piezas decorativas rápidas. |
-| **PETG** | 45 – 55 *(Media-Alta)* | 60 – 120 *(Media)* | 78 °C | 8 / 10 | Muy versátil. Excelente resistencia química, tenaz y con poca contracción. |
-| **ABS** | 33 – 45 *(Media)* | 150 – 200 *(Alta)* | 98 °C | 4 / 10 | Tenaz y ligero. Fácil de post-procesar (lijar/acetona). Sufre de *warping* severo. |
-| **ASA** | 40 – 50 *(Media)* | 160 – 210 *(Alta)* | 98 °C | 5 / 10 | Excelente para exteriores. Resistente a rayos UV e intemperie. Similar al ABS pero con menor contracción. |
-| **Nylon (PA)** | 45 – 75 *(Alta)* | > 500 *(Extrema)* | 110 °C | 2 / 10 | Súper tenaz y flexible. Gran resistencia al desgaste y fatiga. Altamente higroscópico. |
-| **Policarbonato (PC)** | 65 – 75 *(Muy Alta)* | 250 – 400 *(Extrema)* | 115 °C | 1 / 10 | Piezas estructurales extremas. Combina alta rigidez con resistencia de impacto masiva. |
-| **TPU** | 30 – 40 *(Baja)* | No rompe *(Absorción)*| 50 °C | 6 / 10 | Elastómero flexible. Ideal para juntas, bujes, protectores y amortiguadores de impacto. |
-| **PA-CF** | 80 – 110 *(Extrema)* | 80 – 120 *(Media)* | 150 °C | 3 / 10 | Nylon reforzado con carbono. Súper ligero, ultra rígido y estable térmicamente. Muy abrasivo. |
-| **PETG-CF** | 70 – 90 *(Muy Alta)* | 60 – 80 *(Baja)* | 80 °C | 4 / 10 | PETG reforzado con carbono. Mayor rigidez estructural que el PETG común con buena facilidad de impresión. |
-| **HIPS** | 30 – 35 *(Baja)* | 75 – 100 *(Media)* | 75 °C | 6 / 10 | Utilizado principalmente como material de soporte soluble (en limoneno) para ABS. |
-| **PP** | 25 – 32 *(Baja)* | No rompe *(Extrema)* | 98 °C | 2 / 10 | Excelente fatiga mecánica (bisagras vivas) y resistencia química. Muy difícil adherir a la cama. |
-| **PEEK** | 90 – 100 *(Extrema)* | 60 – 70 *(Media)* | 160 °C | 0.5 / 10 | Grado aeroespacial y médico. Máxima resistencia química y mecánica. Requiere hardware especializado. |
+### Propiedades Mecánicas
+
+| Material | Resistencia a la Tracción (MPa) | Resistencia al Impacto (J/m) | Densidad (g/cm³) | Características Clave |
+| :--- | :---: | :---: | :---: | :--- |
+| **PLA** | 50 – 65 | 15 – 25 | 1.24 | Rígido y frágil. Excelente para prototipos visuales y piezas decorativas. |
+| **PETG** | 45 – 55 | 60 – 120 | 1.27 | Muy versátil. Tenaz, baja contracción, buena resistencia química. |
+| **ABS** | 33 – 45 | 150 – 200 | 1.04 | Tenaz y ligero. Fácil post-procesar (lijar/acetona). Warping severo. |
+| **ASA** | 40 – 50 | 160 – 210 | 1.07 | Similar al ABS. Resistente a rayos UV e intemperie. |
+| **Nylon (PA)** | 45 – 75 | > 500 *(No rompe)* | 1.14 | Súper tenaz. Gran resistencia al desgaste y fatiga. |
+| **Policarbonato (PC)** | 65 – 75 | 250 – 400 | 1.20 | Alta rigidez + resistencia de impacto masiva. Piezas estructurales. |
+| **TPU** | 30 – 40 | > 500 *(No rompe)* | 1.21 | Elastómero flexible. Juntas, bujes, amortiguadores. |
+| **PA-CF** | 80 – 110 | 80 – 120 | 1.10 | Nylon + fibra de carbono. Ultra rígido, estable térmicamente. |
+| **PETG-CF** | 70 – 90 | 60 – 80 | 1.30 | PETG + carbono. Mayor rigidez que PETG común. |
+| **HIPS** | 30 – 35 | 75 – 100 | 1.04 | Material de soporte soluble (limoneno) para ABS. |
+| **PP** | 25 – 32 | > 500 *(No rompe)* | 0.90 | Bisagras vivas, fatiga mecánica. Muy ligero. |
+| **PEEK** | 90 – 100 | 60 – 70 | 1.31 | Grado aeroespacial. Máxima resistencia química y mecánica. |
+
+### Propiedades Térmicas y de Impresión
+
+| Material | Temp. Deflexión HDT (°C) | Temp. Boquilla (°C) | Temp. Cama (°C) | Absorción Humedad | Facilidad Impresión |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **PLA** | 55 | 190 – 220 | 50 – 60 | Baja (~0.4%) | 10 / 10 |
+| **PETG** | 78 | 220 – 250 | 70 – 80 | Baja (~0.5%) | 8 / 10 |
+| **ABS** | 98 | 220 – 260 | 95 – 110 | Baja (~0.3%) | 4 / 10 |
+| **ASA** | 98 | 230 – 260 | 90 – 110 | Baja (~0.3%) | 5 / 10 |
+| **Nylon (PA)** | 110 | 240 – 270 | 70 – 90 | **Alta (~8%)** | 2 / 10 |
+| **Policarbonato (PC)** | 115 | 270 – 310 | 100 – 120 | Media (~0.2%) | 1 / 10 |
+| **TPU** | 50 | 210 – 240 | 50 – 60 | Baja (~0.5%) | 6 / 10 |
+| **PA-CF** | 150 | 250 – 280 | 80 – 100 | **Alta (~6%)** | 3 / 10 |
+| **PETG-CF** | 80 | 230 – 260 | 80 – 100 | Baja (~0.4%) | 4 / 10 |
+| **HIPS** | 75 | 220 – 250 | 90 – 110 | Baja (~0.3%) | 6 / 10 |
+| **PP** | 98 | 220 – 260 | 90 – 110 | Muy Baja (~0.03%) | 2 / 10 |
+| **PEEK** | 160 | 360 – 420 | 120 – 160 | Baja (~0.1%) | 0.5 / 10 |
+
+### Requisitos de Hardware
+
+| Material | Boquilla Especial | Cama Caliente | Cerrada | Notas |
+| :--- | :---: | :---: | :---: | :--- |
+| **PLA** | No | Opcional | No | Cualquier impresora. Ideal para empezar. |
+| **PETG** | No | Recomendada | No | Evitar cooling excesivo. |
+| **ABS** | No | Obligatoria | **Sí** | Warping severo sin cerrada. Olores fuertes. |
+| **ASA** | No | Obligatoria | **Sí** | Similar a ABS pero menos olor. |
+| **Nylon (PA)** | Acero endurecido | Recomendada | **Sí** | Altamente higroscópico. Secar antes de usar. |
+| **Policarbonato (PC)** | Acero endurecido | Obligatoria | **Sí** | Exige hardware de alta temperatura. |
+| **TPU** | Directo (sin Bowden) | Opcional | No | Lenta velocidad. Extrusión restringida. |
+| **PA-CF** | **Acero endurecido** | Recomendada | **Sí** | Muy abrasivo. Daña boquillas de latón. |
+| **PETG-CF** | **Acero endurecido** | Recomendada | No | Abrasivo. No usar boquilla de latón. |
+| **HIPS** | No | Obligatoria | **Sí** | Se usa como soporte, no como material principal. |
+| **PP** | No | Obligatoria | **Sí** | Muy difícil adherir. Usar cinta adhesiva o PEI. |
+| **PEEK** | **Acero endurecido** | Obligatoria | **Sí** | Hardware especializado. Impresoras industriales. |
 
 ---
 
