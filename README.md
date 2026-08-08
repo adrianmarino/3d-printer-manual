@@ -22,7 +22,7 @@ Aquí encontrarás todas las guías detalladas disponibles actualmente:
 * [🔥 Calentamiento rápido de cámara (HEATSOAK_CHAMBER)](./heatsoak-chamber.md)
   > Macro para acelerar el precalentamiento de la cámara con convección forzada y ventiladores 5015, optimizada para ABS en impresoras con cámara cerrada.
 
-* [🌀 Mod Ventiladores en la Cama (Bed Fans)](./heatsoak-chamber.md#-mod-de-ventiladores-en-la-cama-bed-fans)
+* [🌀 Mod Ventiladores en la Cama (Bed Fans)](./bed-fans-mod.md)
   > Hardware mod para reducir el tiempo de calentamiento de cámara a la mitad. Incluye piezas imprimibles y guía de instalación para la Creality K1 Max.
 
 ---
