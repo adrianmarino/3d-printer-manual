@@ -10,7 +10,7 @@ Bienvenido al repositorio **3d-printer-manual**. Este proyecto es una recopilaci
 
 Aquí encontrarás todas las guías detalladas disponibles actualmente:
 
-* [🛠️ Guía de Calibración del Z-Offset](./zoffset-caibration.md)
+* [🛠️ Guía de Calibración del Z-Offset](./zoffset-calibration.md)
   > Aprende a ajustar la distancia perfecta entre la boquilla y la cama de impresión paso a paso. Incluye preparación térmica, el método del papel, ajustes "al vuelo" durante la impresión y cómo guardar la configuración permanentemente.
 
 * [🗺️ Calibración de la Cama (Bed Mesh)](./bed-mesh-calibration.md)

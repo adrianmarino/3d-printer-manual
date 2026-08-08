@@ -20,8 +20,8 @@ Documentación de la configuración actual de la impresora 3D Creality K1 Max de
 | **Sistema** | Buildroot 2020.02.1 |
 | **Firmware** | **V1.3.5.19** (ver `/etc/ota_info`) |
 | **Kernel** | Linux 4.4.94 (mips, compilado Nov 2025) |
-| **Python** | 2.7 (para Klipper) |
-| **Almacenamiento** | 6.5GB (2.2GB usado en `/usr/data`) |
+| **Python** | 3.8.2 (venv `klippy-env`, para Klipper) |
+| **Almacenamiento** | 6.5GB (3.9GB usado, 2.2GB libre en `/usr/data`) |
 
 ## Software Instalado
 
@@ -29,7 +29,7 @@ Documentación de la configuración actual de la impresora 3D Creality K1 Max de
 
 | Software | Versión | Puerto | Descripción |
 | :--- | :--- | :--- | :--- |
-| **Klipper** | Creality V1.3.5.19 (Python 2) | - | Firmware de impresión 3D |
+| **Klipper** | Creality V1.3.5.19 (Python 3.8.2) | - | Firmware de impresión 3D |
 | **Moonraker** | - | - | API server para Klipper |
 | **Mainsail** | v2.17.0 | 4408 | Interfaz web para controlar la impresora |
 
@@ -113,7 +113,7 @@ ssh root@192.168.2.100
 | **Tu impresora (real)** | **V1.3.5.19** | ✅ Instalada (confirmado vía `/etc/ota_info`) |
 | OTA sugerida | V1.3.5.22 | ⚠️ **NO instalar** — rompe cámara por LAN |
 | Creality Website | V1.1.0.27 | Línea oficial separada |
-| GitHub (K1_Series_Klipper) | V1.3.3.5 | Línea V1.3.x |
+| GitHub (K1_Series_Klipper) | V1.3.5.19 | Línea V1.3.x (tu firmware actual) |
 
 #### Cronología de versiones (línea V1.3.x)
 
@@ -201,11 +201,11 @@ El script:
 
 ### Espacio en Disco
 
-El sistema tiene **6.5GB** en `/usr/data` con **2.2GB** usados. Mantener al menos **1GB libre** para evitar problemas.
+El sistema tiene **6.5GB** en `/usr/data` con **3.9GB** usados y **2.2GB** libres. Mantener al menos **1GB libre** para evitar problemas.
 
 ### Actualización de Klipper
 
-El Klipper instalado es la versión de **Creality** (V1.3.5.19, Python 2). Si se quiere instalar Klipper mainline (Python 3), se necesita usar un mod como [ballaswag/creality_k1_klipper_mod](https://github.com/ballaswag/creality_k1_klipper_mod).
+El Klipper instalado es la versión de **Creality** (V1.3.5.19, corre en Python 3.8.2 vía el venv `klippy-env`). Si se quiere instalar Klipper mainline, se necesita usar un mod como [ballaswag/creality_k1_klipper_mod](https://github.com/ballaswag/creality_k1_klipper_mod).
 
 > **Nota:** El mod de ballaswag **elimina el LiDAR** y los servicios de Creality. Si quieres mantener el LiDAR, usa la actualización oficial de Creality.
 

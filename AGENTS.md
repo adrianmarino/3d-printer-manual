@@ -8,9 +8,10 @@ Bienvenido. Si eres un agente de IA colaborando en este repositorio, debes adher
 Este repositorio (**3d-printer-manual**) es una recopilación abierta de guías, tutoriales y configuraciones prácticas en español para la calibración, optimización, ajuste y mantenimiento de impresoras 3D (con especial foco en Klipper, Mainsail y materiales de ingeniería).
 
 ## 📁 Estructura del Proyecto
--   `/*.md` (Raíz): Todas las guías temáticas se alojan en la raíz del repositorio (ej. `bed-mesh-calibration.md`, `filamentos-resistencia.md`).
--   `/images/`: Contiene todos los recursos visuales y gráficos (en formato `.png` principalmente) enlazados por las guías.
+-   `/*.md` (Raíz): Todas las guías temáticas se alojan en la raíz del repositorio (ej. `bed-mesh-calibration.md`, `filamentos-resistencia.md`, `k1-max-setup.md`).
+-   `/images/`: Contiene todos los recursos visuales y gráficos (en formato `.png` y `.jpg`) enlazados por las guías.
 -   `/generate_charts.py`: Script de Python con `matplotlib` encargado de procesar la matriz de datos y generar los gráficos comparativos.
+-   `/scripts/`: Scripts de backup y restore para la K1 Max (`backup-k1-max.sh`, `restore-k1-max.sh`).
 
 ---
 
