@@ -20,11 +20,10 @@ SSH_PASS="creality_2023"
 # Rutas remotas
 REMOTE_CONFIG_DIR="/usr/data/printer_data/config"
 REMOTE_HELPER_DIR="/usr/data/helper-script"
-REMOTE_MOONRAKER_DIR="/usr/data/moonraker"
 REMOTE_PRINTER_DATA="/usr/data/printer_data"
-REMOTE_PRINT_STATS="/usr/data/klipper/klippy"
 REMOTE_TIMELAPSE_DIR="/usr/data/printer_data/timelapse"
 REMOTE_FRAMES_DIR="/usr/data/printer_data/frames"
+REMOTE_OTA_INFO="/etc/ota_info"
 
 # Rutas locales
 BACKUP_BASE="$HOME/k1-max-backups"
@@ -95,7 +94,6 @@ backup_config() {
         "octoeverywhere.conf"
         "octoeverywhere-system.cfg"
         ".moonraker.conf.bkp"
-        ".moonraker.uuid"
     )
 
     for f in "${files[@]}"; do
@@ -114,8 +112,9 @@ backup_config() {
     fi
 
     # Último printer.cfg válido (el más reciente)
+    # Nota: con pipefail, si no hay archivos, fallaría — usar || true
     local latest_cfg
-    latest_cfg=$(ssh_cmd "ls -t '$remote'/printer-*.cfg 2>/dev/null | head -1")
+    latest_cfg=$(ssh_cmd "ls -t '$remote'/printer-*.cfg 2>/dev/null | head -1" 2>/dev/null || true)
     if [[ -n "$latest_cfg" ]]; then
         scp_cmd "$PRINTER_USER@$PRINTER_IP:$latest_cfg" "$local_dir/printer-latest.cfg" 2>/dev/null && \
             log "  → printer-latest.cfg (de $(basename "$latest_cfg"))"
@@ -157,12 +156,15 @@ backup_helper_script() {
 # --- Backup de Moonraker -----------------------------------------------------
 backup_moonraker() {
     info "Respaldando Moonraker..."
-    local remote="$REMOTE_MOONRAKER_DIR"
     local local_dir="$BACKUP_DIR/moonraker"
 
     # moonraker.conf ya está en config/, aquí guardamos info de versión
-    # Usar timeout para evitar que pip3 se cuelgue
-    timeout 10 bash -c "ssh_cmd 'pip3 show moonraker 2>/dev/null || pip show moonraker 2>/dev/null' > '$local_dir/moonraker-version.txt'" 2>/dev/null || \
+    # Nota: usar timeout sobre sshpass directo, NO bash -c (no ve la función ssh_cmd)
+    timeout 10 sshpass -p "$SSH_PASS" ssh -p "$PRINTER_PORT" \
+        -o ConnectTimeout=5 -o StrictHostKeyChecking=no \
+        "$PRINTER_USER@$PRINTER_IP" \
+        "pip3 show moonraker 2>/dev/null || pip show moonraker 2>/dev/null" \
+        > "$local_dir/moonraker-version.txt" 2>/dev/null || \
         echo "No se pudo obtener versión de Moonraker" > "$local_dir/moonraker-version.txt"
     log "  → moonraker version info guardada"
 }
@@ -181,6 +183,14 @@ backup_printer_data() {
     scp_cmd "$PRINTER_USER@$PRINTER_IP:$remote/.moonraker.uuid" "$local_dir/" 2>/dev/null && \
         log "  → .moonraker.uuid" || warn "  → .moonraker.uuid no encontrado"
 
+    # Versión REAL del firmware (/etc/ota_info) — crítico para restore
+    if ssh_cmd "test -f '$REMOTE_OTA_INFO'" 2>/dev/null; then
+        scp_cmd "$PRINTER_USER@$PRINTER_IP:$REMOTE_OTA_INFO" "$local_dir/ota_info" 2>/dev/null && \
+            log "  → ota_info (firmware real)" || warn "  → Error copiando ota_info"
+    else
+        warn "  → ota_info no encontrado"
+    fi
+
     # Estado de servicios (solo si supervisorctl está disponible)
     ssh_cmd "command -v supervisorctl >/dev/null 2>&1 && supervisorctl status" > "$local_dir/supervisor-status.txt" 2>/dev/null || \
         ssh_cmd "ps aux" > "$local_dir/process-list.txt" 2>/dev/null || true
@@ -188,17 +198,20 @@ backup_printer_data() {
 
     # Versiones instaladas
     {
+        echo "=== Firmware Version (REAL) ==="
+        ssh_cmd "cat /etc/ota_info 2>/dev/null | grep ota_version" 2>/dev/null || echo "N/A"
+        echo ""
+        echo "=== Firmware Version (comentario printer.cfg) ==="
+        ssh_cmd "head -5 /usr/data/printer_data/config/printer.cfg" 2>/dev/null || echo "N/A"
+        echo ""
         echo "=== Klipper Version ==="
-        ssh_cmd "cat /usr/share/klipper/klippy/__init__.py 2>/dev/null | head -5" 2>/dev/null || echo "N/A"
+        ssh_cmd "git -C /usr/data/klipper log --oneline -1 2>/dev/null || cat /usr/share/klipper/klippy/__init__.py 2>/dev/null | head -5" 2>/dev/null || echo "N/A"
         echo ""
         echo "=== Python Version ==="
         ssh_cmd "python3 --version 2>/dev/null || python --version 2>/dev/null" 2>/dev/null || echo "N/A"
         echo ""
         echo "=== Mainsail Version ==="
         ssh_cmd "cat /usr/data/mainsail/package.json 2>/dev/null | grep version" 2>/dev/null || echo "N/A"
-        echo ""
-        echo "=== Firmware Version ==="
-        ssh_cmd "head -5 /usr/data/printer_data/config/printer.cfg" 2>/dev/null || echo "N/A"
     } > "$local_dir/versions.txt" 2>/dev/null
     log "  → Versiones guardadas en versions.txt"
 }
@@ -209,10 +222,11 @@ backup_timelapse() {
     local local_dir="$BACKUP_DIR/timelapse"
 
     # Solo contamos archivos, no copiamos frames (pesan mucho)
+    # Nota: || true para evitar que pipefail + set -e mate el script si no hay dir
     local frame_count
-    frame_count=$(ssh_cmd "ls '$REMOTE_FRAMES_DIR' 2>/dev/null | wc -l")
+    frame_count=$(ssh_cmd "ls '$REMOTE_FRAMES_DIR' 2>/dev/null | wc -l" 2>/dev/null || echo "0")
     local video_count
-    video_count=$(ssh_cmd "ls '$REMOTE_TIMELAPSE_DIR'/*.mp4 2>/dev/null | wc -l")
+    video_count=$(ssh_cmd "ls '$REMOTE_TIMELAPSE_DIR'/*.mp4 2>/dev/null | wc -l" 2>/dev/null || echo "0")
 
     mkdir -p "$local_dir"
     echo "Frames: $frame_count" > "$local_dir/info.txt"

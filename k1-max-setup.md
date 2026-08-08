@@ -18,7 +18,8 @@ Documentación de la configuración actual de la impresora 3D Creality K1 Max de
 | Componente | Versión |
 | :--- | :--- |
 | **Sistema** | Buildroot 2020.02.1 |
-| **Kernel** | Linux 4.4.94 (mips) |
+| **Firmware** | **V1.3.5.19** (ver `/etc/ota_info`) |
+| **Kernel** | Linux 4.4.94 (mips, compilado Nov 2025) |
 | **Python** | 2.7 (para Klipper) |
 | **Almacenamiento** | 6.5GB (2.2GB usado en `/usr/data`) |
 
@@ -28,7 +29,7 @@ Documentación de la configuración actual de la impresora 3D Creality K1 Max de
 
 | Software | Versión | Puerto | Descripción |
 | :--- | :--- | :--- | :--- |
-| **Klipper** | Creality (Python 2) | - | Firmware de impresión 3D |
+| **Klipper** | Creality V1.3.5.19 (Python 2) | - | Firmware de impresión 3D |
 | **Moonraker** | - | - | API server para Klipper |
 | **Mainsail** | v2.17.0 | 4408 | Interfaz web para controlar la impresora |
 
@@ -105,20 +106,36 @@ ssh root@192.168.2.100
 
 #### Versión actual vs disponible
 
-| Fuente | Última Versión | Fecha |
-| :--- | :--- | :--- |
-| **Tu impresora** | v1.0.3 | Ene 2024 |
-| **Creality Website** | V1.1.0.27 | Mar 2026 |
-| **GitHub (K1_Series_Klipper)** | V1.3.3.5 | Mar 2026 |
+> **📌 Importante:** La versión real del firmware se lee de `/etc/ota_info` (`ota_version`), **NO** del comentario `# Version:` en `printer.cfg` (que queda desactualizado tras cada actualización).
 
-#### Mejoras de V1.3.3.5
+| Fuente | Versión | Estado |
+| :--- | :--- | :--- |
+| **Tu impresora (real)** | **V1.3.5.19** | ✅ Instalada (confirmado vía `/etc/ota_info`) |
+| OTA sugerida | V1.3.5.22 | ⚠️ **NO instalar** — rompe cámara por LAN |
+| Creality Website | V1.1.0.27 | Línea oficial separada |
+| GitHub (K1_Series_Klipper) | V1.3.3.5 | Línea V1.3.x |
+
+#### Cronología de versiones (línea V1.3.x)
+
+```
+V1.3.3.5  (Ene 2024) — LiDAR, velocidad, modo experto, exclude objects
+V1.3.3.46 (Dic 2024) — Fixes incrementales
+V1.3.5.19 (2025)     ← TU VERSIÓN (estable, cámara OK)
+V1.3.5.22 (Jul 2026) — ⚠️ Rompe cámara LAN (bug conocido)
+```
+
+> **⚠️ Bug conocido de V1.3.5.22:** "Optimize video stream transmission security" movió el stream a WebRTC y la cámara dejó de funcionar por LAN en K1/K1C/K1 Max. Usuarios recomiendan quedarse en V1.3.5.19 o hacer rollback. Fuente: [Foro Creality](https://forum.creality.com/t/new-k1c-firmware-v1-3-5-22-mono-color/52410)
+
+#### Mejoras de la línea V1.3.x (vs firmware viejo v1.0.3)
 
 | Función | Descripción |
 | :--- | :--- |
-| **AI LiDAR Motion Advance** | Reconstruido para K1 Max (solo con Creality Print) |
+| **AI LiDAR Flow Calibration** | Reconstruido para K1 Max, compatible con Creality Print, Prusa, Orca |
 | **Ajuste de Velocidad** | 4 modos: Silent, Stable (50%), Standard (100%), Ultrafast (125%) |
-| **Modo Experto** | Ajuste de flujo y offset Z durante impresión |
+| **Modo Experto** | Ajuste de flujo y offset Z durante impresión, calibración PID |
 | **Exclude Objects** | Saltar objetos parciales en impresión por lotes |
+| **Root oficial** | Soporte para instalar Mainsail/Fluidd desde el menú |
+| **Ventilador de chasis** | Controlado por temperatura de cámara (35°C) en vez de siempre encendido |
 
 #### Proceso de actualización seguro
 
@@ -188,9 +205,24 @@ El sistema tiene **6.5GB** en `/usr/data` con **2.2GB** usados. Mantener al meno
 
 ### Actualización de Klipper
 
-El Klipper instalado es la versión de **Creality** (basada en Python 2). Si se quiere instalar Klipper mainline (Python 3), se necesita usar un mod como [ballaswag/creality_k1_klipper_mod](https://github.com/ballaswag/creality_k1_klipper_mod).
+El Klipper instalado es la versión de **Creality** (V1.3.5.19, Python 2). Si se quiere instalar Klipper mainline (Python 3), se necesita usar un mod como [ballaswag/creality_k1_klipper_mod](https://github.com/ballaswag/creality_k1_klipper_mod).
 
 > **Nota:** El mod de ballaswag **elimina el LiDAR** y los servicios de Creality. Si quieres mantener el LiDAR, usa la actualización oficial de Creality.
+
+### Cómo verificar la versión real del firmware
+
+```bash
+# Conectarse por SSH
+ssh-k1-max
+
+# Leer la versión real (no el comentario en printer.cfg)
+cat /etc/ota_info | grep ota_version
+# → ota_version=1.3.5.19
+
+# Alternativa con el script oficial
+sh /etc/ota_bin/get_ota_current_version.sh
+# → 1.3.5.19
+```
 
 ## Instalación de Addons
 

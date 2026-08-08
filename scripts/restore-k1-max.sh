@@ -92,9 +92,14 @@ check_connection() {
 check_firmware_version() {
     info "Verificando firmware actual..."
     local current_version
-    current_version=$(ssh_cmd "head -3 /usr/data/printer_data/config/printer.cfg 2>/dev/null | grep 'Version:'" 2>/dev/null || echo "desconocido")
+    # Versión REAL: /etc/ota_info (el comentario en printer.cfg es stale)
+    current_version=$(ssh_cmd "cat /etc/ota_info 2>/dev/null | grep ota_version | awk -F'=' '{print \$2}'" 2>/dev/null || echo "desconocido")
     local backup_version
-    backup_version=$(grep "Version:" "$BACKUP_DIR/config/printer.cfg" 2>/dev/null | head -1 || echo "desconocido")
+    if [[ -f "$BACKUP_DIR/printer-data/ota_info" ]]; then
+        backup_version=$(grep "ota_version" "$BACKUP_DIR/printer-data/ota_info" | awk -F'=' '{print $2}' || echo "desconocido")
+    else
+        backup_version=$(grep "Version:" "$BACKUP_DIR/config/printer.cfg" 2>/dev/null | head -1 || echo "desconocido")
+    fi
 
     echo "  Firmware actual: $current_version"
     echo "  Firmware backup: $backup_version"
@@ -113,18 +118,17 @@ restore_config() {
     local remote_cfg="$REMOTE_CONFIG_DIR"
 
     # Verificar si hay nuevas configuraciones del firmware
+    # Comparar versión REAL (ota_info) — el comentario en printer.cfg es stale
     local has_new_config=false
-    if ssh_cmd "test -f '$remote_cfg/printer.cfg'" 2>/dev/null; then
-        local remote_ver
-        remote_ver=$(ssh_cmd "head -3 '$remote_cfg/printer.cfg' | grep 'Version:'" 2>/dev/null || echo "")
-        local backup_ver
-        backup_ver=$(head -3 "$backup_cfg/printer.cfg" | grep "Version:" 2>/dev/null || echo "")
+    local remote_ver
+    remote_ver=$(ssh_cmd "cat /etc/ota_info 2>/dev/null | grep ota_version" 2>/dev/null || echo "")
+    local backup_ver
+    backup_ver=$(grep "ota_version" "$BACKUP_DIR/printer-data/ota_info" 2>/dev/null || echo "")
 
-        if [[ "$remote_ver" != "$backup_ver" ]]; then
-            has_new_config=true
-            warn "El firmware tiene configuraciones nuevas que podrían ser importantes"
-            warn "Se crearán archivos de comparación para que revises"
-        fi
+    if [[ -n "$remote_ver" && -n "$backup_ver" && "$remote_ver" != "$backup_ver" ]]; then
+        has_new_config=true
+        warn "El firmware tiene configuraciones nuevas que podrían ser importantes"
+        warn "Se crearán archivos de comparación para que revises"
     fi
 
     # Archivos a restaurar
@@ -201,7 +205,6 @@ restore_helper_script() {
 restore_moonraker() {
     info "Verificando Moonraker..."
     # Moonraker se restaura con la config principal
-    local backup_moonraker="$BACKUP_DIR/moonraker"
 
     # Verificar que moonraker está corriendo
     if ssh_cmd "pgrep -f moonraker" &>/dev/null; then
@@ -276,6 +279,8 @@ create_diff_report() {
 
     info "Generando reporte de diferencias..."
     local diff_report="$BACKUP_DIR/diff-report.txt"
+    local tmp_dir="$BACKUP_DIR/.firmware-new-local"
+    mkdir -p "$tmp_dir"
 
     {
         echo "=== Diferencias entre Backup y Firmware Actual ==="
@@ -284,12 +289,16 @@ create_diff_report() {
 
         for f in printer.cfg gcode_macro.cfg moonraker.conf; do
             if [[ -f "$backup_cfg/$f" ]] && ssh_cmd "test -f '$remote_cfg/$f.firmware-new'" 2>/dev/null; then
+                # Traer el archivo nuevo localmente y comparar (diff remoto no ve rutas locales)
+                scp_cmd "$PRINTER_USER@$PRINTER_IP:$remote_cfg/$f.firmware-new" "$tmp_dir/$f" 2>/dev/null
                 echo "--- $f ---"
-                ssh_cmd "diff '$backup_cfg/$f' '$remote_cfg/$f.firmware-new'" 2>/dev/null || true
+                diff "$backup_cfg/$f" "$tmp_dir/$f" 2>/dev/null || true
                 echo ""
             fi
         done
     } > "$diff_report" 2>/dev/null
+
+    rm -rf "$tmp_dir"
 
     if [[ -s "$diff_report" ]]; then
         log "Reporte de diferencias: $diff_report"
