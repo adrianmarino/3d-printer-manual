@@ -37,21 +37,21 @@ Tampoco reutilizar valores en mm de otros tensiómetros ni de un Belter con otro
 - BIQU Belter con batería y estructura firme.
 - Calibre para medir el espesor de la correa.
 - Llave Allen de 2 mm para los tornillos correspondientes del mecanismo original, según la revisión de la impresora. [1]
-- Calculadora: **[belter.bttwiki.com](https://belter.bttwiki.com/)**.
+- Calculadora: **<a href="https://belter.bttwiki.com/" target="_blank" rel="noopener noreferrer">belter.bttwiki.com</a>**.
 - Para comprobar la conversión: tramo de correa aparte, preferentemente del mismo tipo y espesor, soporte fijo, recipiente y balanza.
 
 | Pieza | Uso | Archivo oficial |
 | --- | --- | --- |
-| ProbeTip | Punta de contacto necesaria para la configuración documentada. | [ProbeTip.STEP](https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/PrintParts/ProbeTip.STEP) |
-| Hand Held bracket | Soporte para uso con una mano. | [Hand Held bracket.STEP](https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/PrintParts/Hand%20Held%20bracket.STEP) |
-| Plunger | Accionamiento para uso con una mano. | [Plunger.STEP](https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/PrintParts/Plunger.STEP) |
-| Zeroing tool | Referencia para calibrar la herramienta. | [BIQU Belter Zeroing tool.STL](https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/Calculation%20Tool/BIQU%20Belter%20Zeroing%20tool.STL) |
+| ProbeTip | Punta de contacto necesaria para la configuración documentada. | <a href="https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/PrintParts/ProbeTip.STEP" target="_blank" rel="noopener noreferrer">ProbeTip.STEP</a> |
+| Hand Held bracket | Soporte para uso con una mano. | <a href="https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/PrintParts/Hand%20Held%20bracket.STEP" target="_blank" rel="noopener noreferrer">Hand Held bracket.STEP</a> |
+| Plunger | Accionamiento para uso con una mano. | <a href="https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/PrintParts/Plunger.STEP" target="_blank" rel="noopener noreferrer">Plunger.STEP</a> |
+| Zeroing tool | Referencia para calibrar la herramienta. | <a href="https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/Calculation%20Tool/BIQU%20Belter%20Zeroing%20tool.STL" target="_blank" rel="noopener noreferrer">BIQU Belter Zeroing tool.STL</a> |
 
 **La pieza de calibración está en `Calculation Tool`, no en `PrintParts`.** La wiki dirige a `PrintParts` para las piezas, pero el STL del cero se encuentra en la otra carpeta del repositorio. [2][8]
 
 ## 4. Calibrar el cero del Belter
 
-Seguir las imágenes de la sección **Calibration Process** de la [wiki de BIQU](https://global.bttwiki.com/belter.html#calibration-process). [2]
+Seguir las imágenes de la sección **Calibration Process** de la <a href="https://global.bttwiki.com/belter.html#calibration-process" target="_blank" rel="noopener noreferrer">wiki de BIQU</a>. [2]
 
 1. Instalar la punta y los accesorios de la configuración documentada.
 2. Asentar el conjunto del soporte contra el medidor de profundidad y comprobar que los tornillos estén firmes y que no haya juego.
@@ -93,7 +93,7 @@ Primero revisar el cero, el espesor ingresado, la punta, las holguras y cómo se
 
 1. Preparar las cargas de **500 a 2000 g, en incrementos de 100 g**.
 2. Tomar **12 mediciones por carga**, retirando y reinstalando el Belter cada vez.
-3. Registrar los resultados en la [planilla oficial](https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/Calculation%20Tool/BIQU_Belter_Calibration_Data.xlsx).
+3. Registrar los resultados en la <a href="https://github.com/bigtreetech/Belter-belt-tension-Tool/blob/master/Calculation%20Tool/BIQU_Belter_Calibration_Data.xlsx" target="_blank" rel="noopener noreferrer">planilla oficial</a>.
 4. La planilla elimina el máximo y el mínimo y calcula el promedio de las 10 lecturas restantes.
 5. Pegar los promedios en **Fit Parameters from Test Data** de la calculadora.
 6. Comprobar nuevamente una carga conocida para evaluar el resultado.
@@ -117,7 +117,7 @@ El Belter tiene una distancia propia entre apoyos. El requisito de **150 mm** co
 **Si se adopta la referencia provisional de esta guía**, usar **6,0 N por correa**, con ambas dentro de **5,5–6,5 N**. No sumar las dos lecturas ni dividir el objetivo entre dos. Esta interpretación individual se basa en el testimonio de uso con Belter; la wiki por sí sola no la define inequívocamente. [1][3]
 
 1. En la calculadora seleccionar **Custom Range** e introducir mínimo **5,5 N** y máximo **6,5 N**. Esto configura la comparación; no calibra la herramienta ni convierte el objetivo en una especificación oficial. [2]
-2. Identificar la revisión del mecanismo y consultar las imágenes de [XY Axis Belt Tension de Creality](https://wiki.creality.com/en/k1-flagship-series/k1-series-general-documents/xy-axis-belt-tension). La guía distingue variantes con y sin tornillos laterales M3×12. [1]
+2. Identificar la revisión del mecanismo y consultar las imágenes de <a href="https://wiki.creality.com/en/k1-flagship-series/k1-series-general-documents/xy-axis-belt-tension" target="_blank" rel="noopener noreferrer">XY Axis Belt Tension de Creality</a>. La guía distingue variantes con y sin tornillos laterales M3×12. [1]
 3. Aflojar los tornillos de fijación indicados para permitir el movimiento del tensor. Realizar cambios pequeños de posición y volver a fijarlo antes de medir. No asumir que dejar actuar los resortes produce exactamente 6 N.
 4. Después de cada ajuste, mover suavemente el cabezal y regresar a la posición de medición. **Volver a medir ambas correas**, porque ajustar una puede afectar a la otra. [7]
 5. Repetir hasta obtener lecturas estables, cercanas entre sí y dentro del rango adoptado.
@@ -154,15 +154,15 @@ Una medición dentro del rango no descarta otros problemas de geometría, poleas
 
 ## 📚 Fuentes y archivos
 
-1. [Creality Wiki — XY Axis Belt Tension](https://wiki.creality.com/en/k1-flagship-series/k1-series-general-documents/xy-axis-belt-tension). [Versión china](https://wiki.creality.com/zh/k1-flagship-series/k1-series-general-documents/xy-axis-belt-tension). Rango publicado y mecanismos de ajuste.
-2. [BIQU Wiki — Belter](https://global.bttwiki.com/belter.html) y [calculadora actual](https://belter.bttwiki.com/). Calibración, medición, comparación y ajuste del modelo con cargas conocidas.
-3. [Facebook — Hey team! K1 max belt tensioning](https://www.facebook.com/groups/967787307995469/posts/1704934860947373/). Testimonio indexado sobre 6,0 ± 0,5 N y uso de Belter; no se pudo consultar la publicación completa ni verificar la respuesta original de soporte.
-4. [Reddit — I suck at tensioning... Anyone know what numbers I should be looking for with this tool on the K1?](https://www.reddit.com/r/crealityk1/comments/1ebqnnc/). Consulta específica sobre Belter, discrepancias de conversión y comprobación con pesos.
-5. [Creality Forum — Bad dimensional accuracy... on K1C](https://forum.creality.com/t/bad-dimensional-accuracy-first-layer-over-extruded-and-other-layers-under-extruded-on-k1c-a-nightmare/25534). Experiencia de usuario con Belter y lecturas posteriores al ajuste.
-6. [Creality Forum — How to set belt tension on K1 Max?](https://forum.creality.com/t/how-to-set-belt-tension-on-k1-max/24797). Referencia comunitaria de aproximadamente 110 Hz, en una consulta con tramo de 150 mm.
-7. [Voron Documentation — Secondary Printer Tuning / Belt Tension](https://docs.vorondesign.com/tuning/secondary_printer_tuning.html#belt-tension). Método acústico y equivalencia para su propia configuración; no constituye una especificación para K1 Max.
-8. [BIGTREETECH — Belter-belt-tension-Tool](https://github.com/bigtreetech/Belter-belt-tension-Tool). STEP, STL del cero y planilla de calibración.
-9. [Creality Forum — K1/K1 Max Printing Ringing Trouble Shooting](https://forum.creality.com/t/k1-k1-max-printing-ringing-trouble-shooting/1451). Revisión del mecanismo y repetición de la optimización de vibraciones.
+1. <a href="https://wiki.creality.com/en/k1-flagship-series/k1-series-general-documents/xy-axis-belt-tension" target="_blank" rel="noopener noreferrer">Creality Wiki — XY Axis Belt Tension</a>. <a href="https://wiki.creality.com/zh/k1-flagship-series/k1-series-general-documents/xy-axis-belt-tension" target="_blank" rel="noopener noreferrer">Versión china</a>. Rango publicado y mecanismos de ajuste.
+2. <a href="https://global.bttwiki.com/belter.html" target="_blank" rel="noopener noreferrer">BIQU Wiki — Belter</a> y <a href="https://belter.bttwiki.com/" target="_blank" rel="noopener noreferrer">calculadora actual</a>. Calibración, medición, comparación y ajuste del modelo con cargas conocidas.
+3. <a href="https://www.facebook.com/groups/967787307995469/posts/1704934860947373/" target="_blank" rel="noopener noreferrer">Facebook — Hey team! K1 max belt tensioning</a>. Testimonio indexado sobre 6,0 ± 0,5 N y uso de Belter; no se pudo consultar la publicación completa ni verificar la respuesta original de soporte.
+4. <a href="https://www.reddit.com/r/crealityk1/comments/1ebqnnc/" target="_blank" rel="noopener noreferrer">Reddit — I suck at tensioning... Anyone know what numbers I should be looking for with this tool on the K1?</a>. Consulta específica sobre Belter, discrepancias de conversión y comprobación con pesos.
+5. <a href="https://forum.creality.com/t/bad-dimensional-accuracy-first-layer-over-extruded-and-other-layers-under-extruded-on-k1c-a-nightmare/25534" target="_blank" rel="noopener noreferrer">Creality Forum — Bad dimensional accuracy... on K1C</a>. Experiencia de usuario con Belter y lecturas posteriores al ajuste.
+6. <a href="https://forum.creality.com/t/how-to-set-belt-tension-on-k1-max/24797" target="_blank" rel="noopener noreferrer">Creality Forum — How to set belt tension on K1 Max?</a>. Referencia comunitaria de aproximadamente 110 Hz, en una consulta con tramo de 150 mm.
+7. <a href="https://docs.vorondesign.com/tuning/secondary_printer_tuning.html#belt-tension" target="_blank" rel="noopener noreferrer">Voron Documentation — Secondary Printer Tuning / Belt Tension</a>. Método acústico y equivalencia para su propia configuración; no constituye una especificación para K1 Max.
+8. <a href="https://github.com/bigtreetech/Belter-belt-tension-Tool" target="_blank" rel="noopener noreferrer">BIGTREETECH — Belter-belt-tension-Tool</a>. STEP, STL del cero y planilla de calibración.
+9. <a href="https://forum.creality.com/t/k1-k1-max-printing-ringing-trouble-shooting/1451" target="_blank" rel="noopener noreferrer">Creality Forum — K1/K1 Max Printing Ringing Trouble Shooting</a>. Revisión del mecanismo y repetición de la optimización de vibraciones.
 
 ---
 
