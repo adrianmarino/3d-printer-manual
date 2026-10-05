@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Ejemplo anotado de gráfica de resonancia de Input Shaper</title>
+  <desc id="desc">Diagrama esquemático con un pico secundario de baja frecuencia, un pico dominante, las componentes X Y Z, la energía combinada y la respuesta esperada después del shaper.</desc>
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <rect x="72" y="64" width="760" height="508" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="110" y="105" fill="#0f172a" font-family="sans-serif" font-size="25" font-weight="700">Ejemplo esquemático: respuesta al barrido en X</text>
+  <text x="110" y="132" fill="#475569" font-family="sans-serif" font-size="16">La forma enseña conceptos; no representa valores universales de una K1 Max.</text>
+  <g stroke="#dbe4ef" stroke-width="1">
+    <line x1="110" y1="180" x2="800" y2="180"/>
+    <line x1="110" y1="270" x2="800" y2="270"/>
+    <line x1="110" y1="360" x2="800" y2="360"/>
+    <line x1="110" y1="450" x2="800" y2="450"/>
+    <line x1="110" y1="540" x2="800" y2="540"/>
+    <line x1="110" y1="180" x2="110" y2="540"/>
+    <line x1="248" y1="180" x2="248" y2="540"/>
+    <line x1="386" y1="180" x2="386" y2="540"/>
+    <line x1="524" y1="180" x2="524" y2="540"/>
+    <line x1="662" y1="180" x2="662" y2="540"/>
+    <line x1="800" y1="180" x2="800" y2="540"/>
+  </g>
+  <rect x="145" y="180" width="136" height="360" fill="#f59e0b" opacity="0.09"/>
+  <text x="158" y="203" fill="#92400e" font-family="sans-serif" font-size="14" font-weight="700">Banda baja</text>
+  <text x="169" y="222" fill="#92400e" font-family="sans-serif" font-size="13">10–25 Hz</text>
+  <path d="M110 526 C145 523 155 481 178 460 C198 443 221 470 245 510 C272 538 315 525 352 515 C388 504 409 437 432 344 C447 286 460 205 476 192 C493 184 508 278 524 381 C540 477 561 516 600 524 C648 533 718 529 800 528" fill="none" stroke="#7c3aed" stroke-width="7" stroke-linecap="round"/>
+  <path d="M110 531 C156 530 182 515 205 500 C225 513 244 531 292 532 C354 531 398 505 431 432 C450 388 465 343 479 342 C500 349 516 434 542 506 C576 534 686 533 800 532" fill="none" stroke="#dc2626" stroke-width="3" opacity="0.9"/>
+  <path d="M110 535 C166 535 199 528 230 522 C286 515 358 535 417 524 C469 513 510 500 535 510 C575 530 677 535 800 535" fill="none" stroke="#16a34a" stroke-width="3" opacity="0.9"/>
+  <path d="M110 537 C192 536 242 530 302 535 C375 537 421 525 460 516 C504 510 575 536 800 537" fill="none" stroke="#2563eb" stroke-width="3" opacity="0.9"/>
+  <path d="M110 537 C170 537 183 526 198 521 C214 527 231 538 350 538 C409 538 441 529 464 514 C485 528 510 538 800 538" fill="none" stroke="#0891b2" stroke-width="4" stroke-dasharray="10 8"/>
+  <g fill="#334155" font-family="sans-serif" font-size="14">
+    <text x="102" y="565">0</text>
+    <text x="236" y="565">20</text>
+    <text x="374" y="565">40</text>
+    <text x="512" y="565">60</text>
+    <text x="650" y="565">80</text>
+    <text x="785" y="565">100</text>
+    <text x="398" y="604" font-size="17" font-weight="700">Frecuencia (Hz)</text>
+    <text transform="translate(38 415) rotate(-90)" font-size="17" font-weight="700">Respuesta / PSD</text>
+  </g>
+  <g stroke="#0f172a" stroke-width="1.5" fill="none">
+    <path d="M248 459 L285 415 L350 415"/>
+    <path d="M475 193 L530 157 L548 157"/>
+  </g>
+  <g font-family="sans-serif">
+    <text x="357" y="410" fill="#0f172a" font-size="16" font-weight="700">Pico secundario</text>
+    <text x="357" y="431" fill="#475569" font-size="14">Otro modo mecánico</text>
+    <text x="554" y="152" fill="#0f172a" font-size="16" font-weight="700">Pico dominante</text>
+    <text x="554" y="173" fill="#475569" font-size="14">Frecuencia que el shaper debe atenuar</text>
+  </g>
+  <g font-family="sans-serif" font-size="15">
+    <line x1="122" y1="616" x2="154" y2="616" stroke="#dc2626" stroke-width="4"/><text x="162" y="621" fill="#334155">X físico</text>
+    <line x1="260" y1="616" x2="292" y2="616" stroke="#16a34a" stroke-width="4"/><text x="300" y="621" fill="#334155">Y físico</text>
+    <line x1="398" y1="616" x2="430" y2="616" stroke="#2563eb" stroke-width="4"/><text x="438" y="621" fill="#334155">Z físico</text>
+    <line x1="536" y1="616" x2="568" y2="616" stroke="#7c3aed" stroke-width="6"/><text x="576" y="621" fill="#334155">X+Y+Z</text>
+    <line x1="674" y1="616" x2="706" y2="616" stroke="#0891b2" stroke-width="4" stroke-dasharray="8 6"/><text x="714" y="621" fill="#334155">After shaper</text>
+  </g>
+  <rect x="870" y="64" width="280" height="572" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <g font-family="sans-serif">
+    <text x="902" y="108" fill="#0f172a" font-size="23" font-weight="700">Cómo leerla</text>
+    <circle cx="905" cy="151" r="14" fill="#7c3aed"/><text x="900" y="157" fill="#ffffff" font-size="15" font-weight="700">1</text>
+    <text x="932" y="148" fill="#0f172a" font-size="16" font-weight="700">Buscá picos</text>
+    <text x="932" y="170" fill="#475569" font-size="14">Son resonancias del conjunto.</text>
+    <circle cx="905" cy="225" r="14" fill="#0891b2"/><text x="900" y="231" fill="#ffffff" font-size="15" font-weight="700">2</text>
+    <text x="932" y="222" fill="#0f172a" font-size="16" font-weight="700">Mirá After shaper</text>
+    <text x="932" y="244" fill="#475569" font-size="14">Debe bajar donde había pico.</text>
+    <circle cx="905" cy="299" r="14" fill="#f59e0b"/><text x="900" y="305" fill="#ffffff" font-size="15" font-weight="700">3</text>
+    <text x="932" y="296" fill="#0f172a" font-size="16" font-weight="700">No asumas causa</text>
+    <text x="932" y="318" fill="#475569" font-size="14">Un pico no identifica una correa.</text>
+    <circle cx="905" cy="373" r="14" fill="#0f766e"/><text x="900" y="379" fill="#ffffff" font-size="15" font-weight="700">4</text>
+    <text x="932" y="370" fill="#0f172a" font-size="16" font-weight="700">Evaluá el coste</text>
+    <text x="932" y="392" fill="#475569" font-size="14">Menos vibración puede exigir</text>
+    <text x="932" y="413" fill="#475569" font-size="14">más smoothing y menos accel.</text>
+    <rect x="894" y="463" width="232" height="124" rx="6" fill="#ecfeff" stroke="#a5f3fc"/>
+    <text x="912" y="493" fill="#155e75" font-size="16" font-weight="700">Validación final</text>
+    <text x="912" y="519" fill="#164e63" font-size="14">La impresión de ringing decide</text>
+    <text x="912" y="540" fill="#164e63" font-size="14">si la vibración afecta la pieza.</text>
+  </g>
+</svg>

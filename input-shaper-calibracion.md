@@ -158,6 +158,16 @@ La medición no es un test directo de la tensión de una correa ni de la calidad
 
 Un pico alto dice: «a esta frecuencia la máquina vibra con facilidad». No identifica por sí solo la pieza que vibra ni demuestra que esa vibración deje ghosting en la pieza.
 
+![Gráfica esquemática anotada de resonancia](./images/input-shaper-grafica-anotada.svg)
+
+La imagen anterior es un esquema para aprender a leer una gráfica, no una medición de referencia. Sus frecuencias, alturas y formas no deben copiarse a la configuración de otra impresora. Relaciona los conceptos visuales con esta lista:
+
+1. **Pico dominante:** la frecuencia donde aparece la respuesta más fuerte. Klipper usa todo el espectro, no solo este punto, para recomendar el shaper.
+2. **Pico secundario o banda baja:** puede ser otro modo de la mecánica. Si es ancho o está a baja frecuencia, suele ser más difícil de compensar sin aumentar `smoothing`.
+3. **X, Y y Z:** son direcciones físicas leídas por el acelerómetro; no equivalen necesariamente al eje de movimiento que Klipper está excitando.
+4. **`X+Y+Z`:** ayuda a localizar la energía total de respuesta.
+5. **`After shaper`:** respuesta estimada tras aplicar el filtro. Debe reducir las zonas resonantes importantes; no confirma por sí sola una mejora de la pieza impresa.
+
 ### 6.2 Encontrar resonancias relevantes
 
 Leer cada gráfica en este orden:
