@@ -19,6 +19,9 @@ Aquí encontrarás todas las guías detalladas disponibles actualmente:
 * [🗺️ Calibración de la Cama (Bed Mesh)](./bed-mesh-calibration.md)
   > Genera y guarda la malla topográfica de la cama de impresión. Explica cómo crear y guardar perfiles para distintos materiales y temperaturas (ej. `BED_MESH_PROFILE SAVE=cr_abs`) y cómo cargarlos.
 
+* [🫨 Calibración de Input Shaper y Resonancias XY](./input-shaper-calibracion.md)
+  > Instala y ejecuta una macro que calibra Input Shaper, guarda los valores de Klipper y genera gráficas de resonancia X/Y accesibles desde Mainsail.
+
 * [📏 Calibración de las Correas XY](./correas-xy-calibracion.md)
   > Calibra y equilibra las correas XY de la K1 Max con BIQU Belter, desde el ajuste del cero hasta la verificación de tensión e impresión.
 
